@@ -10,7 +10,7 @@ namespace MarinaBerthClassLibrary
     {
         private Boat boat;
         private DateTime startDate, endDate;
-
+        private int bookingID;
         public Boat Boat
         {
             get
@@ -47,6 +47,19 @@ namespace MarinaBerthClassLibrary
             set
             {
                 startDate = value;
+            }
+        }
+
+        public int BookingID
+        {
+            get
+            {
+                return bookingID;
+            }
+
+            set
+            {
+                bookingID = value;
             }
         }
 

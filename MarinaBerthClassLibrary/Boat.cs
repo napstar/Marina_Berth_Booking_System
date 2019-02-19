@@ -4,11 +4,63 @@ using System.ComponentModel;
 
 namespace MarinaBerthClassLibrary
 {
-    public class Boat
+    public class Boat:IBoat
     {
         private int maxLength;
         private int maxDraft;
         private string nameOfBoat, nameOfOwner;
+
+        public int MaxLength
+        {
+            get
+            {
+                return maxLength;
+            }
+
+            set
+            {
+                maxLength = value;
+            }
+        }
+
+        public int MaxDraft
+        {
+            get
+            {
+                return maxDraft;
+            }
+
+            set
+            {
+                maxDraft = value;
+            }
+        }
+
+        public string NameOfBoat
+        {
+            get
+            {
+                return nameOfBoat;
+            }
+
+            set
+            {
+                nameOfBoat = value;
+            }
+        }
+
+        public string NameOfOwner
+        {
+            get
+            {
+                return nameOfOwner;
+            }
+
+            set
+            {
+                nameOfOwner = value;
+            }
+        }
 
         enum BoatType
         {
@@ -17,100 +69,13 @@ namespace MarinaBerthClassLibrary
             Narrow
             
         }
-        public void recordNewBooking()
-        {
-            try
-            {
-                Boolean check = true;
-                Console.WriteLine("Type Exit to go back to Main Menu");
-                //do
-                //{
-                    while (!Console.KeyAvailable && check)
-                    {
-                        
 
-                        Console.WriteLine("Enter The Name Of the Boat?");
-                        string boatName = Console.ReadLine();
-
-                        if (boatName.ToUpper().Equals("EXIT"))
-                        {
-                            check = false;
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Boat Name: " + boatName);
-                        }
-                        Console.WriteLine("Enter The Length Of the Boat?");
-                        string strLen = Console.ReadLine();
-                        if (strLen.ToUpper().Equals("EXIT"))
-                        {
-                            check = false;
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Boat Draft: {0}", strLen);
-                        }
-                        Console.WriteLine("Enter The Draft Of the Boat?");
-                        string strDraft = Console.ReadLine();
-                        if (strDraft.ToUpper().Equals("EXIT"))
-                        {
-                            check = false;
-                            break;
-                    }
-                        else
-                        {
-                            Console.WriteLine("Boat Draft: {0}", strDraft);
-                        }
-                    }
-
-                    //Console.WriteLine("Type Exit to go back to Main Menu");
-
-                    //Console.WriteLine("Enter The Name Of the Boat?");
-                    //string boatName = Console.ReadLine();
-                    //if (boatName.ToUpper().Equals("EXIT"))
-                    //{
-                    //    break;
-                    //}
-                    //Console.WriteLine("Boat Name: " + boatName);
-                    //Console.WriteLine("Enter The Length Of the Boat?");
-                    //string strLen = Console.ReadLine();
-                    //Console.WriteLine("Boat Draft: {0}", strLen);
-                    ////validate boat length here
-                    //Console.WriteLine("Enter The Draft Of the Boat?");
-                    //string strDraft = Console.ReadLine();
-
-                    //Console.WriteLine("Boat Draft: {0}", strDraft);
-               // } while (Console.ReadKey(true).Key !=ConsoleKey.Escape);
-
-
-              
-
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
-        public void deleteBooking()
+        public void dock()
         {
             throw new NotImplementedException();
         }
 
-        public void displayAllRecords()
-        {
-            //and available marina space
-            throw new NotImplementedException();
-        }
-
-        public void exitApplication()
+        public void unDock()
         {
             throw new NotImplementedException();
         }
