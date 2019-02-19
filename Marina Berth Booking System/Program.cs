@@ -27,18 +27,17 @@ namespace Marina_Berth_Booking_System
                         //use while loop here
                         newBoat = BoatDataCapture.Capture();
                         DisplayManager.ShowBoatCaptureMessage();
-                        DisplayManager.displayInvalidInputMessage("Please Enter Either 'Y' or 'N' toproceed");
+                        DisplayManager.displayInvalidInputMessage("Do you wish to enter another boat?\n\n Please Enter Either 'Y' or 'N' to proceed");
                         string strProceed = DisplayManager.getUserInputStr();
-
-                        if (strProceed == "Y")
+                        while (strProceed.ToUpper() == "Y")
                         {
-                           
+                            newBoat = BoatDataCapture.Capture();
+                            DisplayManager.displayInvalidInputMessage("Do you wish to enter another boat?\n\n Please Enter Either 'Y' or 'N' to proceed");
+                              strProceed = DisplayManager.getUserInputStr();
                         }
-                        else
-                        {
-                            DisplayManager.clearScreen();
-                            DisplayManager.displayHeaderMenu();
-                        }
+                        DisplayManager.displayInvalidMainMenuAndReturnToMainMenu("Going Back to Main Menu", 2000);
+                        DisplayManager.clearScreen();
+                        DisplayManager.displayHeaderMenu();
 
                         break;
                     case 2:

@@ -11,7 +11,13 @@ namespace MarinaBerthClassLibrary
         public static Boat Capture()
         {
             Boat retVal = new MarinaBerthClassLibrary.Boat();
-            Console.WriteLine("Record Boat");
+            Console.WriteLine("Enter Boat Name");
+            retVal.NameOfBoat = Console.ReadLine();
+            Console.WriteLine("Enter Boat Length");
+           retVal.MaxLength =int.Parse( Console.ReadLine());
+            Console.WriteLine("Enter Boat Owner");
+            retVal.NameOfOwner = Console.ReadLine();
+
             return retVal;
         }
     }
