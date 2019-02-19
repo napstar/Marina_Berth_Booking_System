@@ -45,7 +45,6 @@
     <Compile Include="Booking.cs" />
     <Compile Include="DisplayManager.cs" />
     <Compile Include="IBoat.cs" />
-    <Compile Include="IRepository.cs" />
     <Compile Include="Marina.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

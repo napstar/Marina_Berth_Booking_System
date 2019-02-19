@@ -8,11 +8,11 @@ namespace MarinaBerthClassLibrary
 {
     public class Node
     {
-        public Boat Data { get; set; }
-        public Node Next { get; set; }
-        public Node(Boat data)
+        public   Boat Data;
+        public   Node Next;
+        public  Node(Boat data)
         {
-            this.Data = data;
+            Data = data;
         }
     }
 

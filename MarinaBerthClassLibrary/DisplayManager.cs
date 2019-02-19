@@ -10,6 +10,7 @@ namespace MarinaBerthClassLibrary
     {
         public static int displayHeaderMenu()
         {
+            Console.Clear();
                 string menuText =
                 "\nWELCOME TO MARINA BERTH BOOKING SYSTEM.\n" +
                 "What do you want to do?\n" +
