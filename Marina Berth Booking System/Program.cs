@@ -14,16 +14,23 @@ namespace Marina_Berth_Booking_System
             Queue QueueObj = new MarinaBerthClassLibrary.Queue();
 
             //Marina.mainMenu();
+            //this boolean will be used to 
+            //short cirucit the flow in order to diplay the header menu once
             bool check = true;
-            int userInput = DisplayManager.displayHeaderMenu();
+            string strProceed = "";
+            //get user input
+            //  int userInput = DisplayManager.displayHeaderMenu();
+            int userInput = 0;
             while (userInput!=4)
             {
-                if (check==false)
-                {
-                    userInput = DisplayManager.displayHeaderMenu();
-                }
+                //has this loop run previously?
+                //false mean ,this an n+1 iteration
+                //if (check==false)
+                //{
+                //    userInput = DisplayManager.displayHeaderMenu();
+                //}
                 
-                
+                userInput = DisplayManager.displayHeaderMenu();
 
                 Boat newBoat = new Boat();
                 switch (userInput)
@@ -32,23 +39,30 @@ namespace Marina_Berth_Booking_System
                         //clear 
                         DisplayManager.clearScreen();
                         //record a booking
+                        //
+                        DisplayManager.drawRectangle(" Please follow the Screen Instruction to enter Boat Details".ToUpper().PadLeft(60).PadRight(70)+string.Empty);
                         check = false;
                         //use while loop here
-                        newBoat = BoatDataCapture.Capture();
+                        newBoat = BoatDataCapture.captureBoat();
                         DisplayManager.ShowBoatCaptureMessage();
-                        //add to queue
-                      
-                        QueueObj.Enqueue(newBoat);
-                        DisplayManager.displayInvalidInputMessage("Do you wish to enter another boat?\n\n Please Enter Either 'Y' or 'N' to proceed");
-                        string strProceed = DisplayManager.getUserInputStr();
-                        while (strProceed.ToUpper() == "Y")
+                        if (newBoat.NameOfBoat!=null)
                         {
-                            DisplayManager.clearScreen();
-                            newBoat = BoatDataCapture.Capture();
+                            //add to queue
+
                             QueueObj.Enqueue(newBoat);
                             DisplayManager.displayInvalidInputMessage("Do you wish to enter another boat?\n\n Please Enter Either 'Y' or 'N' to proceed");
                               strProceed = DisplayManager.getUserInputStr();
+                            while (strProceed.ToUpper() == "Y")
+                            {
+                                DisplayManager.clearScreen();
+                                newBoat = BoatDataCapture.captureBoat();
+                                QueueObj.Enqueue(newBoat);
+                                DisplayManager.displayInvalidInputMessage("Do you wish to enter another boat?\n\n Please Enter Either 'Y' or 'N' to proceed");
+                                strProceed = DisplayManager.getUserInputStr();
+                            }
                         }
+                        
+                        
                         DisplayManager.displayInvalidMainMenuAndReturnToMainMenu("Going Back to Main Menu", 2000);
                         DisplayManager.clearScreen();
                       
@@ -61,10 +75,11 @@ namespace Marina_Berth_Booking_System
                     case 3:
                         check = false;
                         // display all
-                       
+                        DisplayManager.clearScreen();
+                     
                         Console.WriteLine(QueueObj.PrintElements());
-                         strProceed = string.Empty;
-                        DisplayManager.displayInvalidInputMessage("To go back to Main Menu\n Please Enter Either 'Y' or 'N' to proceed");
+                          strProceed = string.Empty;
+                        DisplayManager.displayInvalidInputMessage("\nTo go back to Main Menu Please Enter Either 'Y' or 'N' to proceed");
                         while (strProceed.ToUpper() == "N" ||strProceed.Equals(string.Empty))
                         {
                              strProceed = DisplayManager.getUserInputStr();

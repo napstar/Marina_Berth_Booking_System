@@ -18,7 +18,8 @@ namespace MarinaBerthClassLibrary
                 "2. Delete a Booking.\n" +
                 "3. Display All Records.\n" +//and available marina space
                 "4. Exit Application.";
-            Console.WriteLine(menuText);
+            //Console.WriteLine(menuText);
+            drawRectangle(menuText,ConsoleColor.White,ConsoleColor.DarkBlue);
             int userInput = DisplayManager.getUserInput();
             return userInput;
         }
@@ -105,7 +106,48 @@ namespace MarinaBerthClassLibrary
             System.Threading.Thread.Sleep(milliseconds);
             Console.ResetColor();
         }
+        public static void drawRectangle(string message,ConsoleColor foreGndColor,ConsoleColor backGndColor)
+        {
+            Console.BackgroundColor = backGndColor;
+            Console.ForegroundColor = foreGndColor;
+            int txtWidth = message.Length-2 , height = 3;
 
+            for (int j = 1; j <= txtWidth-60; j++)
+            {
+                 
+                    Console.Write("*");  
+                
+            }
+            Console.WriteLine(message.PadLeft(150));
+            for (int j = 1; j <= txtWidth - 60; j++)
+            {
+
+                Console.Write("*");  
+
+            }
+            Console.WriteLine("");
+        
+            Console.ResetColor();
+            Console.WriteLine("Type in an option");
+        }
+        public static void drawRectangle(string message)
+        {
+            int txtWidth = message.Length + 2, height = 3;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            for (int i = 1; i <= height; i++)
+            {
+                for (int j = 1; j <= txtWidth; j++)
+                {
+                    if ((i == 1 || i == height) || (j == 1 || j == txtWidth))
+                        Console.Write("*"); //prints at border place
+                    else
+                        Console.Write(message[j - 2]); //prints inside other than border
+                }
+                Console.WriteLine();
+            }
+            Console.ResetColor();
+        }
         private enum MainMenuAction : int
         {
             invalid = 0,
